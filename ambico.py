@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import openpyxl
 
-FILE_PATH = "insurance_data.xlsx"
+FILE_PATH = "insurance1_data.xlsx"
 
 # --- Title ---
 st.title("Almedahki Broker Insurance")
@@ -67,6 +67,7 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
 
 
