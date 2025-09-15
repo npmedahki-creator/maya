@@ -65,9 +65,18 @@ try:
     st.subheader("💰 Total Collection")
     st.success(f"QAR {df['Total'].sum():,.2f}")
 
+    # --- Delete Row Section ---
+    st.subheader("🗑️ Delete a Row")
+    if not df.empty:
+        row_index = st.number_input("Enter Row Index to Delete", min_value=0, max_value=len(df)-1, step=1)
+        if st.button("Delete Row"):
+            df = df.drop(row_index).reset_index(drop=True)
+
+            # Excel मा लेख्ने (replace)
+            with pd.ExcelWriter(FILE_PATH, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
+                df.to_excel(writer, sheet_name=company, index=False)
+
+            st.success(f"Row {row_index} deleted successfully from {company} sheet!")
+
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
-
-
-
-
