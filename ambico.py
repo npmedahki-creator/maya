@@ -9,7 +9,7 @@ FILE_PATH = "insurance_data.xlsx"
 st.title("Almedahki Broker Insurance")
 
 # --- Sidebar Input Form ---
-st.sidebar.header("➕ Add New Entry")
+st.sidebar.header("Daily Report")
 
 date = st.sidebar.date_input("Date", datetime.today().date())
 company = st.sidebar.selectbox("Insurance Company", 
@@ -21,7 +21,7 @@ amtextend = st.sidebar.number_input("Extend/Other", min_value=0.0, step=0.01)
 amtheadoff = st.sidebar.number_input("From H.O.", min_value=0.0, step=0.01)
 amtcancel = st.sidebar.number_input("Cancel Policy", min_value=0.0, step=0.01)
 
-if st.sidebar.button("Add Entry"):
+if st.sidebar.button("Submit"):
     total_amount = amtbranch + amthealth + amtextend + amtheadoff - amtcancel
 
     # नयाँ डेटा तयार
@@ -67,5 +67,6 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
 
