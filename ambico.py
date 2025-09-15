@@ -6,7 +6,7 @@ import openpyxl
 FILE_PATH = "insurance_data.xlsx"
 
 # --- Title ---
-st.title("📊 AlMedahki Broker Insurance Company")
+st.title("Almedahki Broker Insurance")
 
 # --- Sidebar Input Form ---
 st.sidebar.header("➕ Add New Entry")
@@ -67,4 +67,5 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
