@@ -15,7 +15,7 @@ date = st.sidebar.date_input("Date", datetime.today().date())
 company = st.sidebar.selectbox("Insurance Company", 
                                ["General Takaful", "Doha Islamic", "Misr Insurance", "Doha Commission"])
 branch = st.sidebar.selectbox("Branch", ["Madinat Khalifa", "Sanaiya", "Misamir"])
-amtbranch = st.sidebar.number_input(f"{branch} Amount", min_value=0.0, step=0.01)
+amtbranch = st.sidebar.header.number_input(f"{branch} Amount", min_value=0.0, step=0.01)
 amthealth = st.sidebar.number_input("Health Insurance", min_value=0.0, step=0.01)
 amtextend = st.sidebar.number_input("Extend/Other", min_value=0.0, step=0.01)
 amtheadoff = st.sidebar.number_input("From H.O.", min_value=0.0, step=0.01)
@@ -84,6 +84,7 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
 
 
