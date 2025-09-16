@@ -72,7 +72,7 @@ try:
         password = st.text_input("Enter Password", type="password")
 
         if st.button("Delete Row"):
-            if password == admin@123:
+            if password == "admin@123":
                 df = df.drop(row_index).reset_index(drop=True)
 
                 with pd.ExcelWriter(FILE_PATH, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
@@ -84,5 +84,6 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
 
