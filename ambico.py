@@ -66,7 +66,7 @@ try:
     st.success(f"QAR {df['Total'].sum():,.2f}")
 
     # --- Delete Row Section ---
-    st.subheader("🗑️ Delete a Row (Password Protected)")
+    st.subheader("🗑️ Delete a Row")
     if not df.empty:
         row_index = st.number_input("Enter Row Index to Delete", min_value=0, max_value=len(df)-1, step=1)
         password = st.text_input("Enter Password", type="password")
@@ -84,6 +84,7 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
 
 
