@@ -66,17 +66,22 @@ try:
     st.success(f"QAR {df['Total'].sum():,.2f}")
 
     # --- Delete Row Section ---
-    st.subheader("🗑️ Delete a Row")
+    st.subheader("🗑️ Delete a Row (Password Protected)")
     if not df.empty:
         row_index = st.number_input("Enter Row Index to Delete", min_value=0, max_value=len(df)-1, step=1)
+        password = st.text_input("Enter Password", type="password")
+
         if st.button("Delete Row"):
-            df = df.drop(row_index).reset_index(drop=True)
+            if password == DELETE_PASSWORD:
+                df = df.drop(row_index).reset_index(drop=True)
 
-            # Excel मा लेख्ने (replace)
-            with pd.ExcelWriter(FILE_PATH, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
-                df.to_excel(writer, sheet_name=company, index=False)
+                with pd.ExcelWriter(FILE_PATH, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
+                    df.to_excel(writer, sheet_name=company, index=False)
 
-            st.success(f"Row {row_index} deleted successfully from {company} sheet!")
+                st.success(f"Row {row_index} deleted successfully from {company} sheet! ✅")
+            else:
+                st.error("❌ Wrong Password! Access Denied.")
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
