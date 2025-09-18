@@ -59,7 +59,7 @@ try:
 
     # Summary
     st.subheader(f"📌 Summary for {company}")
-    summary = df.groupby("Date")["Total"].sum().reset_index()
+    summary = df.groupby("Date")["Total"].sum():,.2f.reset_index()
     st.table(summary)
 
     st.subheader("💰 Total Collection")
@@ -84,6 +84,7 @@ try:
 
 except FileNotFoundError:
     st.info("No records found yet. Please add some entries.")
+
 
 
 
